@@ -3,74 +3,197 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0a">
   <title>Bitha | Thrifted luxury</title>
-  <meta name="description" content="Bitha. Thrifted luxury. Luxurious, well-fitting fashion made affordable.">
+  <meta name="description" content="Bitha. Thrifted luxury. Luxurious, well-fitting fashion at prices that make sense.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header class="top">
-    <a class="brand" href="#top" id="top">
-      <!-- Replace with your logo: put it at images/logo.png and uncomment the img line -->
-      <!-- <img src="images/logo.png" alt="Bitha" height="36"> -->
-      <span class="brand-text">BITHA</span>
+  <header class="bar">
+    <a class="wordmark" href="#top" id="top">
+      <!-- To use your logo: save it as images/logo.png, delete the BITHA text below and uncomment the next line -->
+      <!-- <img src="images/logo.png" alt="Bitha" height="30"> -->
+      BITHA
     </a>
-    <nav>
+    <nav class="nav" id="site-nav" aria-label="Main">
       <a href="#shop">Shop</a>
+      <a href="#how">How it works</a>
       <a href="#size-guide">Size guide</a>
-      <a href="#about">About</a>
-      <button class="cart-btn" id="open-cart" aria-label="Open cart">
-        Cart <span id="cart-count">0</span>
-      </button>
+      <a href="#contact">Contact</a>
     </nav>
+    <button class="cart-btn" id="open-cart" aria-label="Open cart">Cart <span id="cart-count">0</span></button>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="site-nav">Menu</button>
   </header>
 
-  <section class="hero">
-    <p class="eyebrow">New pieces drop weekly</p>
-    <h1>Thrifted luxury.</h1>
-    <p class="sub">Luxurious, well-fitting fashion at prices that make sense. Every piece is one of one.</p>
-    <a class="btn" href="#shop">Shop the drop</a>
-  </section>
+  <main>
+    <!-- HERO -->
+    <section class="hero" aria-label="Introduction">
+      <!-- Put your best photo at images/hero.jpg -->
+      <div class="hero-bg"></div>
+      <div class="hero-inner">
+        <p class="status"><span class="dot"></span><span id="status-text">New pieces drop weekly</span></p>
+        <h1 class="hero-title">
+          <span class="ln">Thrifted</span>
+          <em class="ln">luxury</em>
+          <span class="ln">every day.</span>
+        </h1>
+        <p class="hero-sub">Luxurious, well-fitting pieces at prices that make sense. Real measurements on every one. Pick it, pay, and we get it to you.</p>
 
-  <section id="shop" class="section">
-    <div class="section-head">
-      <h2>The drop</h2>
-      <div class="filters" id="filters"></div>
+        <div class="order-card">
+          <div class="order-row">
+            <div class="seg" data-seg role="group" aria-label="How do you want it?">
+              <button type="button" data-val="Pickup" aria-pressed="true">Pickup</button>
+              <button type="button" data-val="Delivery" aria-pressed="false">Delivery</button>
+            </div>
+            <p class="order-note" id="order-note"></p>
+          </div>
+          <div class="order-row order-row-end">
+            <div class="feat" id="feat" hidden>
+              <span class="feat-label">Pick of the drop</span>
+              <strong id="feat-name"></strong>
+              <span class="feat-meta" id="feat-meta"></span>
+              <button class="btn small" type="button" id="feat-add">Add to cart</button>
+            </div>
+            <a class="btn" href="#shop">Shop the drop</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY TILES (built from products.json) -->
+    <section class="band" id="tiles-section" hidden>
+      <div class="wrap">
+        <h2 class="title">What are you <em>looking for?</em></h2>
+        <p class="intro">Jump straight to a category. Every piece is one of one.</p>
+        <div class="tiles" id="tiles"></div>
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section class="band" id="shop">
+      <div class="wrap">
+        <div class="head">
+          <h2 class="title">Pick your <em>piece</em></h2>
+          <div class="rail-tools">
+            <button class="round" type="button" id="prev" aria-label="Scroll left">&lsaquo;</button>
+            <button class="round" type="button" id="next" aria-label="Scroll right">&rsaquo;</button>
+            <button class="link-btn" type="button" id="see-all">See all</button>
+          </div>
+        </div>
+        <div class="filters" id="filters"></div>
+        <div class="rail" id="grid"></div>
+        <p class="empty" id="empty" hidden>No pieces in this category yet. New pieces drop weekly.</p>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="band" id="how">
+      <div class="wrap">
+        <h2 class="title">Pick it. Pay. <em>Done.</em></h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step-n">1</span>
+            <h3>Pick</h3>
+            <p>Add the pieces you want to your cart. Sizes and real measurements are listed on every one.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">2</span>
+            <h3>Pay</h3>
+            <p>Pay securely online and your order is placed right away, or send your order on WhatsApp if you would rather chat first.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">3</span>
+            <h3>Get it</h3>
+            <p>Choose pickup or delivery. We message you to confirm the details.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURE -->
+    <section class="band">
+      <div class="wrap feature">
+        <!-- Put a second photo at images/feature.jpg -->
+        <div class="feature-img" role="img" aria-label="Bitha piece up close"></div>
+        <div class="feature-text">
+          <h2 class="title">One of one. <em>Yours.</em></h2>
+          <p class="intro">No restocks and no duplicates. When a piece sells, it's gone, so you never see your outfit on someone else.</p>
+          <ul class="checks">
+            <li>Measured flat and listed on every piece</li>
+            <li>Condition noted honestly, piece by piece</li>
+            <li>Size guide below to find your fit</li>
+          </ul>
+          <a class="btn" href="#shop">Shop the drop</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIZE GUIDE -->
+    <section class="band" id="size-guide">
+      <div class="wrap sizes">
+        <div class="sizes-text">
+          <h2 class="title">Find your <em>fit.</em></h2>
+          <p class="intro">Lay a piece you already own and love next to the measurements and compare. All numbers are in centimetres.</p>
+          <p class="note">This table shows body measurements as a starting point. Edit it to match your own sizing.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Size</th><th>Bust (cm)</th><th>Waist (cm)</th><th>Hip (cm)</th></tr></thead>
+            <tbody>
+              <tr><td>XS</td><td>78 to 82</td><td>60 to 64</td><td>84 to 88</td></tr>
+              <tr><td>S</td><td>83 to 87</td><td>65 to 69</td><td>89 to 93</td></tr>
+              <tr><td>M</td><td>88 to 93</td><td>70 to 75</td><td>94 to 99</td></tr>
+              <tr><td>L</td><td>94 to 100</td><td>76 to 82</td><td>100 to 106</td></tr>
+              <tr><td>XL</td><td>101 to 108</td><td>83 to 90</td><td>107 to 114</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS (shows only when reviews.json has entries) -->
+    <section class="band" id="reviews" hidden>
+      <div class="wrap">
+        <h2 class="title">People <em>talk.</em></h2>
+        <div class="reviews" id="reviews-list"></div>
+      </div>
+    </section>
+
+    <!-- FITTING / BOOKING -->
+    <section class="band">
+      <div class="wrap book">
+        <h2 class="title">Try it <em>on.</em></h2>
+        <p class="intro">Want to see a piece in person before you buy? Message us on WhatsApp to book a fitting or a pickup slot.</p>
+        <a class="btn" id="wa-book" href="#" target="_blank" rel="noopener">Book on WhatsApp</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="band" id="contact">
+      <div class="wrap contact">
+        <h2 class="title">Find <em>Bitha.</em></h2>
+        <div class="contact-list" id="contact-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-line">
+      <span>&copy; <span id="year"></span> Bitha. Thrifted luxury.</span>
+      <a href="#top">Back to top</a>
     </div>
-    <div class="grid" id="grid"></div>
-    <p class="empty" id="empty" hidden>Nothing in this category right now. Check back soon.</p>
-  </section>
-
-  <section id="size-guide" class="section alt">
-    <h2>Size guide</h2>
-    <p class="lead">Every product lists real measurements, taken flat, in centimetres. Compare them with a piece you already own that fits you well.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Size</th><th>Bust (cm)</th><th>Waist (cm)</th><th>Hip (cm)</th></tr></thead>
-        <tbody>
-          <tr><td>XS</td><td>78 – 82</td><td>60 – 64</td><td>84 – 88</td></tr>
-          <tr><td>S</td><td>83 – 87</td><td>65 – 69</td><td>89 – 93</td></tr>
-          <tr><td>M</td><td>88 – 93</td><td>70 – 75</td><td>94 – 99</td></tr>
-          <tr><td>L</td><td>94 – 100</td><td>76 – 82</td><td>100 – 106</td></tr>
-          <tr><td>XL</td><td>101 – 108</td><td>83 – 90</td><td>107 – 114</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note">These are body measurements, a starting point only. Edit this table to match your own sizing.</p>
-  </section>
-
-  <section id="about" class="section">
-    <h2>About Bitha</h2>
-    <p class="lead">Bitha exists to make luxurious and fashionable fits affordable. When your outfit fits well and looks right, confidence follows. Our vision: luxury fashion as the everyday standard, not the exception.</p>
-    <p class="lead">Questions about a piece? <a id="wa-help" href="#" target="_blank" rel="noopener">Message us on WhatsApp</a>.</p>
-  </section>
-
-  <footer>
-    <p>&copy; <span id="year"></span> Bitha. Thrifted luxury.</p>
+    <div class="giant-wrap" aria-hidden="true"><div class="giant">BITHA</div></div>
   </footer>
+
+  <!-- Floating cart bar (appears once something is in the cart) -->
+  <button class="cart-pill" id="cart-pill" type="button" hidden>
+    <span>View cart (<span id="pill-count">0</span>)</span>
+    <strong id="pill-total">₦0</strong>
+  </button>
 
   <!-- Cart drawer -->
   <div class="overlay" id="overlay" hidden></div>
@@ -83,11 +206,17 @@
     <div class="drawer-foot">
       <div class="total-row"><span>Total</span><strong id="cart-total">₦0</strong></div>
 
+      <div class="seg" data-seg role="group" aria-label="How do you want it?">
+        <button type="button" data-val="Pickup" aria-pressed="true">Pickup</button>
+        <button type="button" data-val="Delivery" aria-pressed="false">Delivery</button>
+      </div>
+      <p class="drawer-note" id="drawer-note"></p>
+
       <form id="checkout-form" autocomplete="on">
         <input name="name" placeholder="Full name" required>
         <input name="email" type="email" placeholder="Email" required>
         <input name="phone" type="tel" placeholder="Phone number" required>
-        <textarea name="address" placeholder="Delivery address (or 'campus pickup')" rows="2" required></textarea>
+        <textarea name="address" placeholder="Notes for pickup (optional)" rows="2"></textarea>
         <button class="btn full" type="submit" id="pay-btn">Pay online</button>
         <button class="btn ghost full" type="button" id="wa-order">Order on WhatsApp instead</button>
         <p class="tiny" id="form-msg" role="status"></p>
@@ -99,7 +228,8 @@
   <form name="orders" method="POST" data-netlify="true" hidden>
     <input name="form-name" value="orders">
     <input name="name"><input name="email"><input name="phone">
-    <input name="address"><input name="items"><input name="total"><input name="reference">
+    <input name="fulfilment"><input name="address">
+    <input name="items"><input name="total"><input name="reference">
   </form>
 
   <script src="https://js.paystack.co/v1/inline.js"></script>
