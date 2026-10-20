@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bitha | Thrifted luxury</title>
+  <meta name="description" content="Bitha. Thrifted luxury. Luxurious, well-fitting fashion made affordable.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="top">
+    <a class="brand" href="#top" id="top">
+      <!-- Replace with your logo: put it at images/logo.png and uncomment the img line -->
+      <!-- <img src="images/logo.png" alt="Bitha" height="36"> -->
+      <span class="brand-text">BITHA</span>
+    </a>
+    <nav>
+      <a href="#shop">Shop</a>
+      <a href="#size-guide">Size guide</a>
+      <a href="#about">About</a>
+      <button class="cart-btn" id="open-cart" aria-label="Open cart">
+        Cart <span id="cart-count">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">New pieces drop weekly</p>
+    <h1>Thrifted luxury.</h1>
+    <p class="sub">Luxurious, well-fitting fashion at prices that make sense. Every piece is one of one.</p>
+    <a class="btn" href="#shop">Shop the drop</a>
+  </section>
+
+  <section id="shop" class="section">
+    <div class="section-head">
+      <h2>The drop</h2>
+      <div class="filters" id="filters"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>Nothing in this category right now. Check back soon.</p>
+  </section>
+
+  <section id="size-guide" class="section alt">
+    <h2>Size guide</h2>
+    <p class="lead">Every product lists real measurements, taken flat, in centimetres. Compare them with a piece you already own that fits you well.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Size</th><th>Bust (cm)</th><th>Waist (cm)</th><th>Hip (cm)</th></tr></thead>
+        <tbody>
+          <tr><td>XS</td><td>78 – 82</td><td>60 – 64</td><td>84 – 88</td></tr>
+          <tr><td>S</td><td>83 – 87</td><td>65 – 69</td><td>89 – 93</td></tr>
+          <tr><td>M</td><td>88 – 93</td><td>70 – 75</td><td>94 – 99</td></tr>
+          <tr><td>L</td><td>94 – 100</td><td>76 – 82</td><td>100 – 106</td></tr>
+          <tr><td>XL</td><td>101 – 108</td><td>83 – 90</td><td>107 – 114</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">These are body measurements, a starting point only. Edit this table to match your own sizing.</p>
+  </section>
+
+  <section id="about" class="section">
+    <h2>About Bitha</h2>
+    <p class="lead">Bitha exists to make luxurious and fashionable fits affordable. When your outfit fits well and looks right, confidence follows. Our vision: luxury fashion as the everyday standard, not the exception.</p>
+    <p class="lead">Questions about a piece? <a id="wa-help" href="#" target="_blank" rel="noopener">Message us on WhatsApp</a>.</p>
+  </section>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Bitha. Thrifted luxury.</p>
+  </footer>
+
+  <!-- Cart drawer -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <h3>Your cart</h3>
+      <button id="close-cart" aria-label="Close cart">&times;</button>
+    </div>
+    <div id="cart-items"></div>
+    <div class="drawer-foot">
+      <div class="total-row"><span>Total</span><strong id="cart-total">₦0</strong></div>
+
+      <form id="checkout-form" autocomplete="on">
+        <input name="name" placeholder="Full name" required>
+        <input name="email" type="email" placeholder="Email" required>
+        <input name="phone" type="tel" placeholder="Phone number" required>
+        <textarea name="address" placeholder="Delivery address (or 'campus pickup')" rows="2" required></textarea>
+        <button class="btn full" type="submit" id="pay-btn">Pay online</button>
+        <button class="btn ghost full" type="button" id="wa-order">Order on WhatsApp instead</button>
+        <p class="tiny" id="form-msg" role="status"></p>
+      </form>
+    </div>
+  </aside>
+
+  <!-- Netlify detects this hidden form at deploy time so paid orders get recorded in your Netlify dashboard -->
+  <form name="orders" method="POST" data-netlify="true" hidden>
+    <input name="form-name" value="orders">
+    <input name="name"><input name="email"><input name="phone">
+    <input name="address"><input name="items"><input name="total"><input name="reference">
+  </form>
+
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "bitha-001",
+    "name": "Sample Blazer",
+    "price": 18000,
+    "category": "Tops",
+    "size": "M",
+    "measurements": "Chest 52cm, Length 68cm",
+    "condition": "Excellent",
+    "image": "images/placeholder.svg",
+    "sold": false
+  },
+  {
+    "id": "bitha-002",
+    "name": "Sample Wide-Leg Trousers",
+    "price": 14500,
+    "category": "Bottoms",
+    "size": "S",
+    "measurements": "Waist 36cm, Inseam 78cm",
+    "condition": "Excellent",
+    "image": "images/placeholder.svg",
+    "sold": false
+  },
+  {
+    "id": "bitha-003",
+    "name": "Sample Slip Dress",
+    "price": 22000,
+    "category": "Dresses",
+    "size": "L",
+    "measurements": "Bust 48cm, Length 110cm",
+    "condition": "Very good",
+    "image": "images/placeholder.svg",
+    "sold": true
+  }
+]
